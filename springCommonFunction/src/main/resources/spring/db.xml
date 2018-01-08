@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns="http://www.springframework.org/schema/beans"
+	   xsi:schemaLocation="
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+
+	<!-- 数据源配置,使用应用内的DBCP数据库连接池 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+		<!-- Connection Info -->
+		<property name="driverClassName" value="${jdbc.driver:}"/>
+		<property name="url" value="${jdbc.url:}"/>
+		<property name="username" value="${jdbc.username:}"/>
+		<property name="password" value="${jdbc.password:}"/>
+		<!-- Connection Pooling Info -->
+		<property name="testOnBorrow" value="false"/>
+
+		<property name="initialSize" value="${jdbc.initialSize:}"/>
+		<property name="maxTotal" value="${jdbc.maxTotal:}"/>
+		<property name="maxIdle" value="${jdbc.maxIdle:}"/>
+		<property name="minIdle" value="${jdbc.minIdle:}"/>
+		<property name="defaultAutoCommit" value="false"/>
+		<!-- Idle超过一个小时后被回收 -->
+		<property name="timeBetweenEvictionRunsMillis" value="3600000"/>
+		<property name="minEvictableIdleTimeMillis" value="3600000"/>
+	</bean>
+
+
+	<!-- mybatis 配置 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
+		<property name="typeAliasesPackage" value="com.huangtianci.commonfunction.*.bean.entity"/>
+		<property name="mapperLocations" value="classpath:mapper/**/*Mapper.xml"/>
+		<property name="plugins">
+			<array>
+				<bean class="com.github.pagehelper.PageInterceptor">
+					<!-- 这里的几个配置主要演示如何使用，如果不理解，一定要去掉下面的配置 -->
+					<property name="properties">
+						<value>
+							helperDialect=mysql
+							reasonable=false
+							supportMethodsArguments=true
+							params=count=countSql
+							autoRuntimeDialect=true
+						</value>
+					</property>
+				</bean>
+			</array>
+		</property>
+	</bean>
+
+	<!-- sqlSessionTemplate配置 -->
+	<bean id="sqlSessionTemplate"    class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+
+	<bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.huangtianci.commonfunction.*.mapper" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+		<property name="properties">
+			<value>
+				mappers=tk.mybatis.mapper.common.Mapper
+				IDENTITY=MYSQL
+				notEmpty=true
+			</value>
+		</property>
+	</bean>
+
+	<!-- 事务管理器, Jdbc单数据源事务 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+
+</beans>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huangtianci.commonfunction.uploadanddownload.mapper.TaxMapper">
+  <resultMap id="BaseResultMap" type="com.huangtianci.commonfunction.uploadanddownload.bean.entity.Tax">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="id_number" jdbcType="VARCHAR" property="idNumber" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="total_amount" jdbcType="DECIMAL" property="totalAmount" />
+    <result column="total_deduct_amount" jdbcType="DECIMAL" property="totalDeductAmount" />
+    <result column="this_time_deduct_amount" jdbcType="DECIMAL" property="thisTimeDeductAmount" />
+    <result column="this_time_pay_amount" jdbcType="DECIMAL" property="thisTimePayAmount" />
+    <result column="order_date" jdbcType="TIMESTAMP" property="orderDate" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+  </resultMap>
+
+  <select id="getLastVersion" resultType="java.lang.Integer">
+    SELECT
+    MAX(version) as version
+    FROM
+    tax
+    WHERE
+    order_date <![CDATA[>=]]> #{startDate}
+    AND
+    order_date <![CDATA[<]]> #{endDate}
+  </select>
+
+  <select id="selectByIdNumberAndDate" resultMap="BaseResultMap">
+    select
+    *
+    from
+    tax
+    WHERE
+    id_number = #{idNumber}
+    AND
+    order_date <![CDATA[>=]]> #{startDate}
+    AND
+    order_date <![CDATA[<]]> #{endDate}
+    order BY version ASC
+  </select>
+
+  <select id="selectByDate" resultMap="BaseResultMap">
+    select
+    *
+    from
+    tax
+    WHERE
+    order_date <![CDATA[>=]]> #{startDate}
+    AND
+    order_date <![CDATA[<]]> #{endDate}
+  </select>
+
+  <select id="selectByQueryDTO" resultMap="BaseResultMap">
+    select
+    *
+    from
+    tax
+    WHERE
+    1=1
+    <if test="idNumber != null and idNumber!=''" >
+      AND id_number = #{idNumber}
+    </if>
+    <if test="name != null and name!=''" >
+      AND name = #{name}
+    </if>
+    <if test="startDate != null" >
+      AND order_date <![CDATA[>=]]> #{startDate}
+    </if>
+    <if test="endDate != null" >
+      AND order_date <![CDATA[<]]> #{endDate}
+    </if>
+    order BY version,order_date ASC
+  </select>
+</mapper>

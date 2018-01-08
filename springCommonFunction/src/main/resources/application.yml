@@ -1,0 +1,37 @@
+server:
+  port: 8081
+
+
+spring:
+  application:
+    name: springCommonFunction
+
+# 邮件配置
+#  mail:
+#    host: smtp.qq.com
+#    username: tianci.huang@qq.com
+#    password: #11111
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+#            required: true
+
+
+jdbc:
+  driver: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/common_function?characterEncoding=utf8
+  username: root
+  password: root
+  initialSize: 5
+  maxTotal: 50
+  maxIdle: 20
+  minIdle: 5
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1111/eureka

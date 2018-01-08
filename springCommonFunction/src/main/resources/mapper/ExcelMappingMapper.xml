@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huangtianci.commonfunction.uploadanddownload.mapper.ExcelMappingMapper">
+  <resultMap id="BaseResultMap" type="com.huangtianci.commonfunction.uploadanddownload.bean.entity.ExcelMapping">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="table_name" jdbcType="VARCHAR" property="tableName" />
+    <result column="prop_name" jdbcType="VARCHAR" property="propName" />
+    <result column="prop_index" jdbcType="VARCHAR" property="index" />
+    <result column="prop_type" jdbcType="VARCHAR" property="propType" />
+  </resultMap>
+
+  <select id="selectByPage" resultMap="BaseResultMap">
+    SELECT
+    *
+    FROM
+    excel_mapping
+    WHERE
+    1=1
+    <if test="tableName != null and tableName != ''">
+      and table_name = #{tableName}
+    </if>
+    ORDER BY prop_index ASC
+  </select>
+
+  <select id="selectByTableName" resultMap="BaseResultMap">
+    SELECT
+    *
+    FROM
+    excel_mapping
+    WHERE
+    table_name = #{tableName}
+    ORDER BY prop_index ASC
+  </select>
+</mapper>
