@@ -78,6 +78,8 @@ public class Out<T> implements Serializable{
 
     public static class Builder<T> {
 
+        protected Builder() {}
+
         private T result;
 
         private boolean isSuccess = false;
