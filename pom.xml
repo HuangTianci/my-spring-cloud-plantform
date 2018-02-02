@@ -16,6 +16,7 @@
         <module>securityOauth2</module>
         <module>springCommonFunction</module>
         <module>userManager</module>
+        <module>apiGateway</module>
     </modules>
 
     <parent>
