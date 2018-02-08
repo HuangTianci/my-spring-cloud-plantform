@@ -17,6 +17,7 @@
         <module>springCommonFunction</module>
         <module>userManager</module>
         <module>apiGateway</module>
+        <module>lucene</module>
     </modules>
 
     <parent>

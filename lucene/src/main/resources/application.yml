@@ -1,0 +1,16 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: lucene
+
+jdbc:
+  driver: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/test2?characterEncoding=utf8
+  username: root
+  password: root
+  initialSize: 5
+  maxTotal: 50
+  maxIdle: 20
+  minIdle: 5

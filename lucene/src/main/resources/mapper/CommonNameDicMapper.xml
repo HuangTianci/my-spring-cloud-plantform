@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huangtianci.lucene.mapper.CommonNameDicMapper">
+  <resultMap id="BaseResultMap" type="com.huangtianci.lucene.bean.entity.CommonNameDic">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="common_code" jdbcType="VARCHAR" property="commonCode" />
+    <result column="common_name" jdbcType="VARCHAR" property="commonName" />
+    <result column="component_code" jdbcType="VARCHAR" property="componentCode" />
+    <result column="component_name" jdbcType="VARCHAR" property="componentName" />
+    <result column="actual_dosage_type_code" jdbcType="VARCHAR" property="actualDosageTypeCode" />
+    <result column="actual_dosage_type_name" jdbcType="VARCHAR" property="actualDosageTypeName" />
+    <result column="label_dosage_type_code" jdbcType="VARCHAR" property="labelDosageTypeCode" />
+    <result column="label_dosage_type_name" jdbcType="VARCHAR" property="labelDosageTypeName" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated" />
+    <result column="modifier" jdbcType="VARCHAR" property="modifier" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="is_deleted" jdbcType="CHAR" property="isDeleted" />
+  </resultMap>
+</mapper>

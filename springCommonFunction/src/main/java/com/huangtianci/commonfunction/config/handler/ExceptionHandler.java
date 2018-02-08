@@ -5,7 +5,6 @@ import com.huangtianci.commonfunction.common.enums.ResultCodeEnum;
 import com.huangtianci.commonfunction.common.exception.ParameterException;
 import com.huangtianci.commonfunction.common.exception.ServiceException;
 import com.huangtianci.commonfunction.utils.JsonUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
