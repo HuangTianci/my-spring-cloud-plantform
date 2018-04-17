@@ -10,6 +10,7 @@ import com.huangtianci.commonfunction.uploadanddownload.bean.entity.ExcelMapping
 import com.huangtianci.commonfunction.uploadanddownload.mapper.ExcelMappingMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class ExcelMappingService {
         return excelMappingMapper.selectByTableName(tableName);
     }
 
+    @Transactional
     public Out updateNameAndIndex(ExcelMappingUpdateDTO excelMappingUpdateDTO) {
         ExcelMapping excelMapping = new ExcelMapping();
         excelMapping.setId(excelMappingUpdateDTO.getId());

@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ImportResource;
  * @date 2017/11/22
  */
 @SpringBootApplication
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 @ImportResource("classpath:spring/*.xml")
 @ComponentScan
 public class SpringCommonFunctionApplication {
