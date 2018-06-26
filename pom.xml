@@ -10,13 +10,13 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <modules>
-        <module>eurekaServer</module>
-        <module>feignConsumer</module>
-        <module>ribbonConsumer</module>
-        <module>securityOauth2</module>
-        <module>springCommonFunction</module>
-        <module>userManager</module>
-        <module>apiGateway</module>
+        <module>eureka-server</module>
+        <module>feign-consumer</module>
+        <module>ribbon-consumer</module>
+        <module>security-oauth2</module>
+        <module>common-function</module>
+        <module>user-manager</module>
+        <module>api-gateway</module>
         <module>lucene</module>
     </modules>
 
