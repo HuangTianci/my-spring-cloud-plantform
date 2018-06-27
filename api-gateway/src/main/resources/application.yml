@@ -6,13 +6,20 @@ server:
   port: 5555
 
 zuul:
+  ignored-services: '*'
   routes:
-    hello-server:
-      path: /helloServer/**
-      serviceId: springCommonFunction
-    feign-server:
-      path: /feignConsumer/**
-      serviceId: springFeignConsumer
+    common-function: /helloServer/**
+    feign-consumer: /feignConsumer/**
+    api-a:
+      path: /api-a/**
+      url: forward:/local
+#    hello-server:
+#      path: /helloServer/**
+#      serviceId: common-function
+#    feign-server:
+#      path: /feign/**
+#      serviceId: feign-consumer
+
 
 eureka:
   client:

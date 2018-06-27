@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @date 2018/6/26
  */
 @Component
-public class TestFilter extends ZuulFilter{
+public class TestFilter extends ZuulFilter {
     @Override
     public String filterType() {
         return "pre";

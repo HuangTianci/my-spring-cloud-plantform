@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author Huang Tianci
  * @date 2017/12/5
  */
-@FeignClient("springCommonFunction")
+@FeignClient("common-function")
 public interface HelloService {
 
     @GetMapping("/hello")

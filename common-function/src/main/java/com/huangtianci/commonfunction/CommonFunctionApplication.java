@@ -14,9 +14,9 @@ import org.springframework.context.annotation.ImportResource;
 @EnableDiscoveryClient
 @ImportResource("classpath:spring/*.xml")
 @ComponentScan
-public class SpringCommonFunctionApplication {
+public class CommonFunctionApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringCommonFunctionApplication.class, args);
+        SpringApplication.run(CommonFunctionApplication.class, args);
     }
 }
