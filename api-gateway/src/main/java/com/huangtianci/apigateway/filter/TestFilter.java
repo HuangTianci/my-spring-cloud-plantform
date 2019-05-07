@@ -32,6 +32,7 @@ public class TestFilter extends ZuulFilter {
         ctx.setResponseStatusCode(401);
         ctx.setResponseBody("被拦截了");
         ctx.getResponse().setContentType("text/html;charset=UTF-8");
+        //
         return null;
     }
 }
